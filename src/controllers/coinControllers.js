@@ -1,5 +1,5 @@
 const StudentCoins = require('../models/CoinModel');
-const Teacher = require('../models/Teacher'); // Assuming there's a Teacher model for validating the teacherToken
+const Teacher = require('../models/Teachers'); // Assuming there's a Teacher model for validating the teacherToken
 
 /**
  * Add coins to a student.
