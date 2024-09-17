@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { postAddCoins, postRemoveCoins } = require('../controllers/coinControllers');
+const {AddCoins, DeleteCoins} = require('../controllers/coinControllers');
 
-// POST route to add coins to a student
-router.post('/add-coins', postAddCoins);
-
-// POST route to remove coins from a student
-router.post('/remove-coins', postRemoveCoins);
-
+router.put('/add-coins', AddCoins)
+router.put('/delete-coins', DeleteCoins)
 module.exports = router;
