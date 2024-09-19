@@ -1,17 +1,23 @@
 const express = require('express');
 const multer = require('multer');
 const router = express.Router();
-const homeworkController = require('../controllers/homeworkController'); // Import the controller
+const homeworkController = require('../controllers/HomeworkControlles');
+const fs = require('fs');
+const path = require('path');
 
-// Set up Multer for file storage
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Directory to save uploaded files
+        const uploadDir = 'uploads/';
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true }); // Create the directory if it doesn't exist
+        }
+        cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname); // Unique file name
     }
 });
+
 
 const upload = multer({ storage: storage });
 
